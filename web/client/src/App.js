@@ -6,7 +6,7 @@ import Container from './components/container';
 import AboutUs from './components/about-us';
 import Activities from './components/activities';
 import News from './components/news';
-import CreateActivity from './components/admin/createActivity';
+import createActivity from './components/admin/createActivity';
 import Admin from './components/admin/admin';
 
 import './App.css';
@@ -19,7 +19,7 @@ const App = () => {
                         <Route path='/aboutUs' render={AboutUs}/>
                         <Route path='/activities' render={Activities}/>
                         <Route path='/news' render={News}/>
-                        <Route path='/admin/createActivity' render={CreateActivity}/>
+                        <Route path='/admin/createActivity' render={createActivity}/>
                         <Route path='/admin' render={Admin}/>
                     </Switch>
                 </Container>
