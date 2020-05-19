@@ -48,13 +48,19 @@
 }
 
 .subTitle{
+  left: 42px;
   color: white !important;
   font-size: 8px;
   font-weight: bold;
   position: relative;
+  top: -14px;
+
 }
 
-.aboutUsTitle{
+.sectionTitle{
+  margin-bottom: 30px;
+  color: #569fdc;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -62,10 +68,26 @@ a:hover{
   text-decoration: none !important;
 }
 
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+}
 
 .navbarMenu a{
   color: #569fdc !important;
   margin-right: 20px;
   font-weight: bold;
+}
 
+
+.footerContent{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.container{
+  max-width: 1000px !important;
+  margin: 40px;
+  padding: 0 25px;
 }
