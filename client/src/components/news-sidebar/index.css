@@ -1,0 +1,12 @@
+.sidebar {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-around;
+
+}
+
+.newsDiv{
+    width: 250px;
+    height: 150px;
+    background: yellow;
+}

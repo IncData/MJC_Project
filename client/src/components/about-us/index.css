@@ -1,0 +1,8 @@
+.aboutUs{
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutUsText{
+    max-width: 500px;
+}
