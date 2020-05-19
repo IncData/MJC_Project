@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import NewsSidebar from '../news-sidebar';
 
-
 //import './index.css';
 import aboutUsLogo from "../../logo/mjc_about_us.png";
 
 
- const createActivity = () => {
+const createActivity = () => {
 
-    const [info , setInfo] = useState([
-        {activityTitle: ""},
-        {activityDescription: ""},
-        {activityResponsibleName : ""},
-        {activityResponsibleEmail : ""}
-
-    ])
+    const [info , setInfo] = useState({
+        activityTitle: '',
+        activityDescription: '',
+        activityResponsibleName : '',
+        activityResponsibleEmail : ''
+    })
     const handelChange = name => event => setInfo({...info,  [name]: event.target.value })
     return (
         <form onSubmit={this.handleSubmit}>
