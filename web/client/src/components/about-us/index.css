@@ -1,8 +1,22 @@
 .aboutUs{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .aboutUsText{
+    padding: 35px;
     max-width: 500px;
+}
+
+
+@media (max-width: 1050px){
+    .menu{
+        display: flex;
+        align-items: center;
+    }
+    .aboutUsImg{
+        max-width: 100%;
+        width: 100%;
+    }
 }

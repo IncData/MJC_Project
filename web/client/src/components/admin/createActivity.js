@@ -1,21 +1,43 @@
 import React, { useState } from 'react';
-import NewsSidebar from '../news-sidebar';
-
+import axios from 'axios';
 //import './index.css';
-import aboutUsLogo from "../../logo/mjc_about_us.png";
 
 
-const createActivity = () => {
+const Activity = () => {
 
     const [info , setInfo] = useState({
-        activityTitle: '',
-        activityDescription: '',
-        activityResponsibleName : '',
-        activityResponsibleEmail : ''
+        activityTitle: "",
+        activityDescription: "",
+        activityResponsibleName : "",
+        activityResponsibleEmail : "",
+        activityResponsiblePhone : "",
+        activityResponsibleAddress : "",
+        activityResponsibleCity : "",
+        activityResponsibleZip : "",
+        activityType : ""
+
     })
+
     const handelChange = name => event => setInfo({...info,  [name]: event.target.value })
+
+    const handleSubmit = () => {
+
+        const url = `http://localhost:4000/api/admin/createActivity`;
+
+        axios.post(url, info)
+            .then(({data}) => {
+                const { status, message } = data;
+                if(status){
+                    console.log(status)
+                    //setMessage(message)
+                }
+            })
+            .catch(error => console.log(error));
+    }
+
+
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className="container">
                 <div className="text-center mb-4">
                     {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
@@ -27,7 +49,7 @@ const createActivity = () => {
                 <div className="form-group">
                     <label htmlFor="meeting-time">Choose a time for your appointment:</label>
                     <input type="datetime-local" id="meeting-time"
-                           name="meeting-time" value="2018-06-12T19:30"
+                           name="meeting-time"
                            min="2018-06-07T00:00" max="2018-06-14T00:00"></input>
                 </div>
                 <div className="form-group">
@@ -52,29 +74,41 @@ const createActivity = () => {
                     <input type="email" onChange={handelChange('activityResponsibleEmail')} id="inputEmail" className="form-control" placeholder="Reponsible Email"
                            required/><br/>
                     <label>Phone Number </label>
-                    <input type="tel" id="inputPhone" className="form-control" placeholder="Reponsible Phone"
+                    <input type="tel" onChange={handelChange('activityResponsiblePhone')} id="inputPhone" className="form-control" placeholder="Reponsible Phone"
                            required/><br/>
                     <p><strong>Adresse of Responsible</strong></p>
-                    <label htmlFor="inputNo">Number</label>
-                    <input type="number" className="form-control" id="inputNumber"></input><br/>
                     <label htmlFor="inputAddress">Street</label>
-                    <input type="text" className="form-control" id="inputAddress"
+                    <input type="text" onChange={handelChange('activityResponsibleAddress')} className="form-control" id="inputAddress"
                            placeholder="123 rue de la rue"></input><br/>
                     <label htmlFor="inputCity">City</label>
-                    <input type="text" className="form-control" id="inputCity"></input><br/>
+                    <input type="text" onChange={handelChange('activityResponsibleCity')} className="form-control" id="inputCity"></input><br/>
                     <label htmlFor="inputZip">Zip</label>
-                    <input type="text" className="form-control" id="inputZip"></input><br/>
+                    <input type="text" onChange={handelChange('activityResponsibleZip')} className="form-control" id="inputZip"></input><br/>
 
-                    {/* TO DEVELOP ACCORDING DB MODEL */}
                 </div>
 
-                <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></input>
+                {/*<div className="form-check form-check-inline">
+                    <input className="form-check-input" type="checkbox" id="inlineCheckbox1" ></input>
                     <label className="form-check-label" htmlFor="inlineCheckbox1">Sports</label>
-                </div>
+                </div>*/}
+                <p>Activity Type </p>
                 <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"></input>
-                    <label className="form-check-label" htmlFor="inlineCheckbox2">Cultural</label>
+                    <label>
+                        Sportive
+                        <input
+                            name="sportive"
+                            type="checkbox"
+                            onChange={handelChange('activityType')} />
+                    </label>
+                    <label>
+                        Cultural
+                        <input
+                            name="cultural"
+                            type="checkbox"
+                            onChange={handelChange('activityType')} />
+                    </label>
+                    {/*<input className="form-check-input" type="checkbox" id="inlineCheckbox2"></input>
+                    <label className="form-check-label" htmlFor="inlineCheckbox2">Cultural</label>*/}
                 </div>
 
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Publish Activity</button>
@@ -82,8 +116,14 @@ const createActivity = () => {
 
             </div>
         </form>
-
-
     )
+
 }
-export default createActivity;
+
+
+const CreateActivity = () => {
+
+    return <Activity />
+
+}
+export default CreateActivity;

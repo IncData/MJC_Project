@@ -15,8 +15,7 @@ const AboutUs = () => {
                         alt=""
                         src={aboutUsLogo}
                         width="300"
-                        height="200"
-                        className="d-inline-block align-top"
+                        className="d-inline-block align-top aboutUsImg"
                     />
 
                 </div>

@@ -10,7 +10,6 @@ import CreateActivity from './components/admin/createActivity';
 import Admin from './components/admin/admin';
 import Dashboard from './components/admin/dashboard';
 import CreateUser from './components/admin/createUser';
-
 import './App.css';
 const App = () => {
     return (
@@ -32,4 +31,8 @@ const App = () => {
     )
 }
 
+
+
 export default App;
+
+

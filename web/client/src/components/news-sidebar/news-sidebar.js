@@ -13,7 +13,7 @@ const NewsSidebar = () => {
             <br/>
             <div className="newsDiv">
                 <h5>Breaking News</h5>
-                <p>Here will be some description as well</p>
+                <p>Here will be some description as well. Here will be some description as well. Here will be some description as well. Here will be some description as well. Here will be some description as well.</p>
             </div>
         </div>
     )

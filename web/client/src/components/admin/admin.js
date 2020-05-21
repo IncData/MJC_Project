@@ -74,7 +74,7 @@ const Admin = () => {
         <div className="container">
             <form class="form-signin">
                 <div class="text-center mb-4">
-                    <img class="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>
+                    <img class="mb-4" src="../../logo/LogoMJC.png" alt width="72" height="72"/>
                     <h1 class= "h3 mb-3 font-weight-normal"> MJC Strasbourg/Petite France</h1>
                     <p>
                         Hey Admin!, do not forget to log in
@@ -93,9 +93,9 @@ const Admin = () => {
                 <br/>
 
                 <div class="checkbox mb-3">
-                    <label>
-                    <input type="checkbox" value="remember-me"/>Remember me
-                </label>
+                <label for="remember">Remember me</label><br/>
+                    <input type="checkbox" value="remember-me"/>
+                
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 <p class="mt-5 mb-3 text-muted text-center">© MJC Strasbourg 2020</p>
