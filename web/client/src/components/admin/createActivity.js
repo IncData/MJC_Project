@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 //import './index.css';
+import DatePicker from "react-datepicker";
 
+import "react-datepicker/dist/react-datepicker.css";
 
 const Activity = () => {
 
@@ -11,17 +13,30 @@ const Activity = () => {
         activityResponsibleName : "",
         activityResponsibleEmail : "",
         activityResponsiblePhone : "",
-        activityResponsibleAddress : "",
-        activityResponsibleCity : "",
-        activityResponsibleZip : "",
-        activityType : ""
+        activityAddress : "",
+        activityCity : "",
+        activityZip : "",
+        activityTypeSportive: false,
+        activityTypeCultural: false,
+        startDate: new Date()
 
     })
 
-    const handelChange = name => event => setInfo({...info,  [name]: event.target.value })
+    const handelChange = name => event => {
+        if(name === 'activityTypeSportive') {
+            setInfo({...info,  activityTypeSportive: !info.activityTypeSportive})
+        } else if(name === 'activityTypeCultural') {
+            setInfo({...info,  activityTypeCultural: !info.activityTypeCultural})
+        } else {
+            setInfo({...info,  [name]: event.target.value })
+        }
 
-    const handleSubmit = () => {
+    }
+    const changeDate = (date) => setInfo({...info, startDate: date})
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        //console.log(info)
         const url = `http://localhost:4000/api/admin/createActivity`;
 
         axios.post(url, info)
@@ -29,12 +44,10 @@ const Activity = () => {
                 const { status, message } = data;
                 if(status){
                     console.log(status)
-                    //setMessage(message)
                 }
             })
             .catch(error => console.log(error));
     }
-
 
     return (
         <form onSubmit={handleSubmit}>
@@ -48,10 +61,11 @@ const Activity = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="meeting-time">Choose a time for your appointment:</label>
-                    <input type="datetime-local" id="meeting-time"
-                           name="meeting-time"
-                           min="2018-06-07T00:00" max="2018-06-14T00:00"></input>
-                </div>
+                    <DatePicker
+                        selected={info.startDate}
+                        onChange={changeDate}
+                    />
+                </div> 
                 <div className="form-group">
                     <label>Title</label>
                     <input type="text" onChange={handelChange('activityTitle')} id="inputTitle" className="form-control" placeholder="Start with a title"
@@ -61,9 +75,23 @@ const Activity = () => {
 
                 <div className="form-group">
                     <label>Decription textarea</label>
-                    <textarea onChange={handelChange('activityDescription')} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea onChange={handelChange('activityDescription')} className="form-control"  rows="3"></textarea>
                 </div>
-                <br/>
+
+                <div className="form-group">
+                    <label>Adresse of activity</label>
+                    <input onChange={handelChange('activityAddress')} placeholder="123 rue de la rue" className="form-control" ></input>
+                </div>
+
+                <div className="form-group">
+                    <label>City of activity</label>
+                    <input onChange={handelChange('activityCity')} className="form-control" ></input>
+                </div>
+
+                <div className="form-group">
+                    <label>Zip of activity</label>
+                    <input onChange={handelChange('activityZip')} className="form-control" ></input>
+                </div>
 
                 <div className="form-group">
                     <label><strong>Activity Responsible </strong></label><br/>
@@ -76,21 +104,9 @@ const Activity = () => {
                     <label>Phone Number </label>
                     <input type="tel" onChange={handelChange('activityResponsiblePhone')} id="inputPhone" className="form-control" placeholder="Reponsible Phone"
                            required/><br/>
-                    <p><strong>Adresse of Responsible</strong></p>
-                    <label htmlFor="inputAddress">Street</label>
-                    <input type="text" onChange={handelChange('activityResponsibleAddress')} className="form-control" id="inputAddress"
-                           placeholder="123 rue de la rue"></input><br/>
-                    <label htmlFor="inputCity">City</label>
-                    <input type="text" onChange={handelChange('activityResponsibleCity')} className="form-control" id="inputCity"></input><br/>
-                    <label htmlFor="inputZip">Zip</label>
-                    <input type="text" onChange={handelChange('activityResponsibleZip')} className="form-control" id="inputZip"></input><br/>
 
                 </div>
 
-                {/*<div className="form-check form-check-inline">
-                    <input className="form-check-input" type="checkbox" id="inlineCheckbox1" ></input>
-                    <label className="form-check-label" htmlFor="inlineCheckbox1">Sports</label>
-                </div>*/}
                 <p>Activity Type </p>
                 <div className="form-check form-check-inline">
                     <label>
@@ -98,17 +114,15 @@ const Activity = () => {
                         <input
                             name="sportive"
                             type="checkbox"
-                            onChange={handelChange('activityType')} />
+                            onChange={handelChange('activityTypeSportive')} />
                     </label>
                     <label>
                         Cultural
                         <input
                             name="cultural"
                             type="checkbox"
-                            onChange={handelChange('activityType')} />
+                            onChange={handelChange('activityTypeCultural')} />
                     </label>
-                    {/*<input className="form-check-input" type="checkbox" id="inlineCheckbox2"></input>
-                    <label className="form-check-label" htmlFor="inlineCheckbox2">Cultural</label>*/}
                 </div>
 
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Publish Activity</button>

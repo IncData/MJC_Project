@@ -1,8 +1,23 @@
 const mongoose = require('mongoose');
-const User = require('../../models/user');
+const Activity = require('../../models/activityModels');
 
 module.exports = {
     createActivity: (req, res, next) => {
-        console.log(res.req.body, "response");
+        console.log(req.body, "response");
+        const { startDate,
+                activityTitle,
+                activityDescription,
+                activityAddress,
+                activityCity,
+                activityZip,
+                activityTypeCultural,
+                activityTypeSportive,
+                activityResponsibleName,
+                activityResponsibleEmail,
+                activityResponsiblePhone
+        } = req.body;
+
+
+
     }
 }
