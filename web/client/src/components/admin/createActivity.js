@@ -42,9 +42,10 @@ const Activity = () => {
         axios.post(url, info)
             .then(({data}) => {
                 const { status, message } = data;
-                if(status){
+                //if(status){
                     console.log(status)
-                }
+                    console.log(message)
+                //}
             })
             .catch(error => console.log(error));
     }
@@ -109,7 +110,7 @@ const Activity = () => {
 
                 <p>Activity Type </p>
                 <div className="form-check form-check-inline">
-                    <label>
+                    <label className="checkboxLabel">
                         Sportive
                         <input
                             name="sportive"

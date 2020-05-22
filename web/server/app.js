@@ -6,18 +6,18 @@ const bodyParser = require('body-parser');
 
 const adminRoutes = require('./api/routes/admin');
 
-/*mongoose.connect(
+mongoose.connect(
     `mongodb+srv://root:root@cluster0-6znus.mongodb.net/test?retryWrites=true&w=majority`,
     { useNewUrlParser : true,
     useUnifiedTopology: true }
 
-)*/
-
+)
+/*
 mongoose.connect(
     `mongodb+srv://mjc:1234@mjcstrasbourg-2wl1e.gcp.mongodb.net/test?retryWrites=true&w=majority`,
     { useNewUrlParser : true,
     useUnifiedTopology: true })
-    
+*/
     .then(() => console.log("MongoDB successfully connected"))
     .catch(err => console.log(err));
 

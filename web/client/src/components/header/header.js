@@ -32,7 +32,7 @@ export default function Header(){
                         </Link>
                     </Nav>
                     <Nav>
-                        <Link to='/test2'>
+                        <Link to='/profile'>
                             Profile
                         </Link>
                     </Nav>

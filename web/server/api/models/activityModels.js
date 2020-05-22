@@ -27,6 +27,10 @@ const ActivitySchema = new Schema({
     type: String,
   },
 
+  zip:{
+    type: Number,
+  },
+
   responsibleName:{
     type: String,
     required: true,
@@ -41,7 +45,7 @@ const ActivitySchema = new Schema({
     required: true,
   },
 
-  activitytype: {
+  activityType: {
     type: String,
     required: true, 
   },

@@ -53,20 +53,6 @@ const Footer = () => {
                                         className="d-inline-block align-top"
                                     />
                                 </div>
-                                {/*<ul>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 1</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 2</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 4</a>
-                            </li>
-                        </ul>*/}
                             </MDBCol>
                         </div>
                     </div>
