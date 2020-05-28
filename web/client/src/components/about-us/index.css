@@ -9,6 +9,10 @@
     max-width: 500px;
 }
 
+.mapContainer{
+    width: 300px !important;
+}
+
 
 @media (max-width: 1050px){
     .menu{

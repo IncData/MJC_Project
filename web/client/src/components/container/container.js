@@ -17,7 +17,7 @@ const Container = (props) => {
         } else {
             return (
                 <div className="template">
-                    <div>
+                    <div className="mainContent">
                         {children}
                     </div>
                     <NewsSidebar />

@@ -19,12 +19,24 @@ const ActivitySchema = new Schema({
     required: true,
   },
 
+  startHour:{
+    type: Number,
+  },
+
+  endHour:{
+    type: Number,
+  },
+
   address:{
     type: String,
   },
 
   city:{
     type: String,
+  },
+
+  zip:{
+    type: Number,
   },
 
   responsibleName:{
@@ -41,7 +53,7 @@ const ActivitySchema = new Schema({
     required: true,
   },
 
-  activitytype: {
+  activityType: {
     type: String,
     required: true, 
   },
@@ -59,6 +71,6 @@ const ActivitySchema = new Schema({
 });
 
 
-const Activity = mongoose.model('Activty', ActivitySchema);
+const Activity = mongoose.model('Activity', ActivitySchema);
 
 module.exports = Activity;

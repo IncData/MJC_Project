@@ -3,7 +3,6 @@
 }
 
 body{
-  padding-bottom: 160px;
   padding-top: 85px;
 }
 
@@ -63,7 +62,7 @@ body{
 }
 
 .sectionTitle{
-  margin-bottom: 30px;
+  margin: 30px 0;
   color: #569fdc;
   font-weight: bold;
   text-align: center;
@@ -74,6 +73,7 @@ a:hover{
 }
 
 .headerSection {
+  z-index: 99999999;
   position: fixed;
   width: 100%;
   top: 0;
@@ -91,11 +91,31 @@ a:hover{
 .footerContent{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .container{
   max-width: 1000px !important;
   margin: 40px;
   padding: 0 25px;
+}
+
+.mainContent{
+  width: calc(100% - 250px);
+}
+
+.checkboxLabel{
+  margin-right: 15px;
+}
+
+.form-control {
+  width: 50% !important;
+}
+
+.divHour{
+  display: flex;
+  justify-content: flex-start;
+}
+.inputHour {
+  width: 25% !important;
 }

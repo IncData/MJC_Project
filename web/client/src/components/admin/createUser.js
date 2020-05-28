@@ -6,40 +6,46 @@ import './index.css';
 const User = () => {
 
     const [info , setInfo] = useState({
-        activityTitle: "",
-        activityDescription: "",
-        activityResponsibleName : "",
-        activityResponsibleEmail : "",
+        name: "",
+        surname: "",
+        email: "",
+        password: "",
+        password2: "",
+        userTypeUser:false,
+        userTypeAdmin:false
 
     })
 
-    const handelChange = name => event => setInfo({...info,  [name]: event.target.value })
+    const handelChange = name => event => {
+        if(name === 'userTypeUser') {
+            setInfo({...info,  userTypeUser: !info.userTypeUser})
+        } else if(name === 'userTypeAdmin') {
+            setInfo({...info,  userTypeAdmin: !info.userTypeAdmin})
+        } else {
+            setInfo({...info,  [name]: event.target.value })
+        }
 
-    const handleSubmit = () => {
+    }
 
-        const url = `http://localhost:4000/api/admin/createActivity`;
-
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        //console.log("24");
+        const url = `http://localhost:4000/api/admin/createuser`;
+        console.log(info, 'info');
         axios.post(url, info)
             .then(({data}) => {
                 const { status, message } = data;
+                //console.log(data);
                 if(status){
                     console.log(status)
                     //setMessage(message)
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log(error));   
     }
 
-
     return (
-        //     <div class="sidebarr">
-        //     <a class="active" href="#home">Home</a>
-        //     <a href="/admin/createUser">Create User</a>
-        //     <a href="/admin/createActivity">CreateActivity</a>
-        //     <a href="#about">About</a>
-        //   </div>
-
-        <form class ="form-signin "onSubmit={handleSubmit}>
+        <form className ="form-signin "onSubmit={handleSubmit}>
             <div className="container">
                 <div className="text-center mb-4">
                     {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
@@ -51,25 +57,51 @@ const User = () => {
 
                 <div className="form-group">
                     <label>User Name</label>
-                    <input type="text" onChange={handelChange('activityTitle')} id="inputUserName" className="form-control" placeholder="Start with a user name"
+                    <input type="text" onChange={handelChange('name')} id="inputUserName" className="form-control" placeholder="Start with a user name"
                            required/><br/>
                 </div>
-                <div class="form-label-group">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus/><br/>
+
+                <div className="form-group">
+                    <label>User Sur Name</label>
+                    <input type="text" onChange={handelChange('surname')} id="inputUserName" className="form-control" placeholder="Start with a user name"
+                           required/><br/>
+                </div>
+
+                <div className="form-label-group">
+                    <label >Email address</label>
+                    <input type="email" onChange={handelChange('email')} id="inputEmail" class="form-control" placeholder="Email address" required autofocus/><br/>
 
                 </div>
 
-                <div class="form-label-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required/>
+                <div className="form-label-group">
+                    <label >Password</label>
+                    <input type="password" onChange={handelChange('password')} id="password" class="form-control" placeholder="Password" required/><br/>
 
                 </div>
-                <br/>
-                <div class="form-label-group">
-                    <label for="inputPassword">Password Confirmation</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password Confirmation" required/>
 
+                <div className="form-label-group">
+                    <label >Password Confirmation</label>
+                    <input type="password" onChange={handelChange('password2')} id="password2" class="form-control" placeholder="Password Confirmation" required/><br/>
+
+                </div>
+
+                <p>User Type </p>
+                <div className="form-check form-check-inline">
+                    <label>
+                        User
+                        <input
+                            name="user"
+                            type="checkbox"
+                            onChange={handelChange('userTypeUser')} />
+                    </label>
+
+                    <label>
+                        Admin
+                        <input
+                            name="admin"
+                            type="checkbox"
+                            onChange={handelChange('userTypeAdmin')} />
+                    </label>
                 </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Create User</button>
                 <p className="mt-5 mb-3 text-muted text-center">© MJC Strasbourg 2020</p>
@@ -80,7 +112,7 @@ const User = () => {
 
     )
 
-}
+};
 
 
 const CreateUser = () => {

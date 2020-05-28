@@ -1,24 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
+import MapContainer from "./mapContainer.js";
 
 import './index.css';
-import aboutUsLogo from "../../logo/mjc_about_us.png";
-import {Navbar} from "react-bootstrap";
 
-const AboutUs = () => {
+const AboutUSPage = () => {
     return (
-
         <div className="container">
             <h2 className="sectionTitle">Ubout Us</h2>
             <div className="aboutUs">
-                <div>
-                    <img
-                        alt=""
-                        src={aboutUsLogo}
-                        width="300"
-                        className="d-inline-block align-top aboutUsImg"
-                    />
 
+                <div className="App mapContainer">
+                    <MapContainer/>
                 </div>
+
                 <div className="aboutUsText">
                     <p>Les Maisons des Jeunes et de la Culture (MJC) sont nées après la Seconde Guerre Mondiale, dans
                         une
@@ -36,6 +30,11 @@ const AboutUs = () => {
             </div>
         </div>
     )
+}
+
+const AboutUs = () => {
+    return <AboutUSPage/>
+
 }
 
 export default AboutUs;
