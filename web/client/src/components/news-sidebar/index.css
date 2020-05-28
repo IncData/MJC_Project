@@ -1,8 +1,12 @@
 .newsDiv{
     width: 250px;
     padding: 10px;
-    background: yellow;
     margin: 20px 0;
+    border: 1px solid grey;
+}
+
+.newsDiv p{
+    font-size: 14px;
 }
 
 

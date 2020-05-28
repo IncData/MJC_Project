@@ -13,49 +13,17 @@ const UserProfile = () => {
                 <img
                     alt=""
                     src={aboutUsLogo}
-                    width="100"
-                    height="100"
+                    width="50"
+                    height="50"
                     className="d-inline-block align-top"
                 />
-                <h3>Title</h3>
-                <h6>Date of publication</h6>
-                <h6>Activity type : Cultural / Sport</h6>
-                <p>Description Description Description Description Description Description Description Description
-                    Description Description Description Description Description Description Description Description</p>
-                <button type="contact-button" class="button">Send an email to Responsible</button>
+                <h3>Terres d’Oh ! Balades sur les rives et canaux d’Alsace et de Lorraine</h3>
+                <h6>22/05/2020</h6>
+                <h6>Sportive</h6>
+                <p>Pour l’heure d’un déconfinement progressif, le tourisme de proximité est à privilégier. Exit le tourisme de masse et revenons quelques années en arrière tout en profitant des nouvelles technologies et le numérique qui nous aident à préparer notre séjour.</p>
+                {/*<button type="contact-button" class="button">Send an email to Responsible</button>*/}
             </div><br/>
-            <div>
-                <img
-                    alt=""
-                    src={aboutUsLogo}
-                    width="100"
-                    height="100"
-                    className="d-inline-block align-top"
-                />
-                <h3>Title</h3>
-                <h6>Date of publication</h6>
-                <h6>Activity type : Cultural / Sport</h6>
-                <p>Description Description Description Description Description Description</p>
-            </div>
-            <div>
-                <img
-                    alt=""
-                    src={aboutUsLogo}
-                    width="100"
-                    height="100"
-                    className="d-inline-block align-top"
-                />
-                <h3>Title</h3>
-                <h6>Date of publication</h6>
-                <h6>Activity type : Cultural / Sport</h6>
-                <p>Description Description Description Description Description Description</p>
-            </div>
-            <div>
-                <h3>Title</h3>
-                <h6>Date of publication</h6>
-                <h6>Activity type : Cultural / Sport</h6>
-                <p>Description Description Description Description Description Description</p>
-            </div>
+
         </div>
 
     );

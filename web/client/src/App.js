@@ -13,6 +13,7 @@ import CreateActivity from './components/admin/createActivity';
 import Dashboard from './components/admin/dashboard';
 import CreateUser from './components/admin/createUser';
 import UserProfile from './components/user/user-profile'
+import Home from './components/home/index'
 import Login from './components/auth/login'
 import { Provider } from "react-redux";
 import store from "./store";
@@ -33,8 +34,7 @@ const App = () => {
                             <Route path='/admin/dashboard' render={Dashboard}/>
                             <Route path='/admin/createuser' render={CreateUser}/>
                             <Route path='/login' component={Login} />
-                            
-                            
+                            <Route path='/' render={Home}/>
                         </Switch>
                     </Container>
                 <Footer/>

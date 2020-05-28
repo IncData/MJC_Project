@@ -38,14 +38,14 @@ const Activities = () => {
             <div className="container" key={i}>
                 <Link to={'/item/'+e._id}>
                     <div>
+                        <h4>{e.title}</h4>
                         <img
                             alt=""
                             src={aboutUsLogo}
-                            width="100"
-                            height="100"
+                            width="50"
+                            height="50"
                             className="d-inline-block align-top"
                         />
-                        <h3>{e.title}</h3>
                         <h6>{e.date}</h6>
                         <h6>{e.activityType}</h6>
                         <p>{e.description}</p>
@@ -59,7 +59,7 @@ const Activities = () => {
         <Fragment>
             <h2 className="sectionTitle">Activities</h2>
             <div>
-                <Form.Control as="select" custom onChange={selectType}>
+                <Form.Control as="select" custom className="inp" onChange={selectType}>
                     <option value="All">Toutes les activités</option>
                     <option value="Sportive">Activités Sportives</option>
                     <option value="Cultural">Activités Culturelles</option>
