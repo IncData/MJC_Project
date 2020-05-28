@@ -10,7 +10,7 @@ const User = () => {
         surname: "",
         email: "",
         password: "",
-        passwordconfirmation: "",
+        password2: "",
         userTypeUser:false,
         userTypeAdmin:false
 
@@ -27,26 +27,25 @@ const User = () => {
 
     }
 
-    const handleSubmit = () => {
-
-        const url = `http://localhost:4000/api/admin/createUser`;
-
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        //console.log("24");
+        const url = `http://localhost:4000/api/admin/createuser`;
+        console.log(info, 'info');
         axios.post(url, info)
             .then(({data}) => {
                 const { status, message } = data;
+                //console.log(data);
                 if(status){
                     console.log(status)
                     //setMessage(message)
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log(error));   
     }
 
-
-
-
     return (
-        <form class ="form-signin "onSubmit={handleSubmit}>
+        <form className ="form-signin "onSubmit={handleSubmit}>
             <div className="container">
                 <div className="text-center mb-4">
                     {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
@@ -68,21 +67,21 @@ const User = () => {
                            required/><br/>
                 </div>
 
-                <div class="form-label-group">
-                    <label for="inputEmail">Email address</label>
+                <div className="form-label-group">
+                    <label >Email address</label>
                     <input type="email" onChange={handelChange('email')} id="inputEmail" class="form-control" placeholder="Email address" required autofocus/><br/>
 
                 </div>
 
-                <div class="form-label-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" onChange={handelChange('password')} id="inputPassword" class="form-control" placeholder="Password" required/><br/>
+                <div className="form-label-group">
+                    <label >Password</label>
+                    <input type="password" onChange={handelChange('password')} id="password" class="form-control" placeholder="Password" required/><br/>
 
                 </div>
 
-                <div class="form-label-group">
-                    <label for="inputPassword">Password Confirmation</label>
-                    <input type="password" onChange={handelChange('passwordconfirmation')} id="inputPassword" class="form-control" placeholder="Password Confirmation" required/><br/>
+                <div className="form-label-group">
+                    <label >Password Confirmation</label>
+                    <input type="password" onChange={handelChange('password2')} id="password2" class="form-control" placeholder="Password Confirmation" required/><br/>
 
                 </div>
 
@@ -113,7 +112,7 @@ const User = () => {
 
     )
 
-}
+};
 
 
 const CreateUser = () => {

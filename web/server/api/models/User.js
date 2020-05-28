@@ -1,8 +1,6 @@
 //User Schema MJC Strasbourg
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//const passwordHash = require("password-hash");
-//const jwt = require("jwt-simple");
 const config = require("../config/config");
 
 const UserSchema = new Schema({
@@ -36,8 +34,8 @@ const UserSchema = new Schema({
   },
 
   userType: {
-    type: Boolean,
-    default: false
+    type: String,
+    required: true
   },
   createdAt: {
     type: Date,
@@ -49,16 +47,8 @@ const UserSchema = new Schema({
   }
 });
 
-//---------TO CHECK WITH TATEVIK FOR ADMIN METHOD-------//
-UserSchema.methods = {
-  authenticate: function(password) {
-    return passwordHash.verify(password, this.password);
-  },
-  getToken: function() {
-    return jwt.encode(this, config.secret);
-  }
-};
 
-const User = mongoose.model('User', UserSchema);
+
+const User = mongoose.model('users', UserSchema);
 
 module.exports = User;

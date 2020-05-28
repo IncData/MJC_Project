@@ -3,21 +3,23 @@ const app = express();
 const mongoose = require('mongoose');
 const env = require('dotenv').config()
 const bodyParser = require('body-parser');
+const users = require("./api/routes/users");
+const passport = require("passport");
 
 const adminRoutes = require('./api/routes/admin');
 
-mongoose.connect(
-    `mongodb+srv://root:root@cluster0-6znus.mongodb.net/test?retryWrites=true&w=majority`,
-    { useNewUrlParser : true,
-    useUnifiedTopology: true }
+// mongoose.connect(
+//     `mongodb+srv://root:root@cluster0-6znus.mongodb.net/test?retryWrites=true&w=majority`,
+//     { useNewUrlParser : true,
+//     useUnifiedTopology: true}
 
-)
-/*
+// )
+
 mongoose.connect(
     `mongodb+srv://mjc:1234@mjcstrasbourg-2wl1e.gcp.mongodb.net/test?retryWrites=true&w=majority`,
     { useNewUrlParser : true,
     useUnifiedTopology: true })
-*/
+
     .then(() => console.log("MongoDB successfully connected"))
     .catch(err => console.log(err));
 
@@ -38,6 +40,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api/admin', adminRoutes)
+
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport config
+require("./api/config/passport") (passport);
+// Routes
+app.use("/api/admin", users);
 
 app.use((req, res, next) => {
     const error = new Error("404 Not Found");

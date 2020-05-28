@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { createActivity , getActivities, createUser} = require('./services/admin.services');
+const { createActivity , getActivities, getActivitiy, getRooms, askToFollowActivity} = require('./services/admin.services');
 
 router.post('/createActivity', createActivity);
-router.get('/getActivities', getActivities);
-router.post('/createUser', createUser);
+router.post('/askToFollowActivity', askToFollowActivity);
+router.get('/getActivities/:type', getActivities);
+router.get('/getActivity/:id', getActivitiy);
+router.get('/getRooms', getRooms);
+
 
 module.exports = router;
