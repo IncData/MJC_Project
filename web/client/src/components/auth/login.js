@@ -16,6 +16,13 @@ class Login extends Component {
         };
     }
 
+    componentDidMount() {
+        // If logged in and user navigates to Login page, should redirect them to home page
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push("/home");
+        }
+      }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
             this.props.history.push("/profile"); // push user to home when they login
