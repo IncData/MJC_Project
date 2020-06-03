@@ -11,7 +11,6 @@ require('dotenv').config();
 module.exports = {
     createActivity: (req, res, next) => {
         try {
-
             const {
                 startDate,
                 activityTitle,
@@ -27,9 +26,9 @@ module.exports = {
                 activityResponsiblePhone,
                 selectedOption
 
-        } = req.body;
+            } = req.body;
 
-        let activityType;
+            let activityType;
 
             if (activityTypeSportive) {
                 activityType = 'Sportive';
@@ -38,20 +37,53 @@ module.exports = {
             }
 
 
-            var checkAvailability = RoomReservations.
-            where('room_id').equals(selectedOption).
-            where('date').equals(startDate).
-            exec(function (err, rooms) {
+            var checkAvailability = RoomReservations.where('room_id').equals(selectedOption).where('date').equals(startDate).exec(function (err, rooms) {
                 if (err) return handleError(err);
-                if (rooms && rooms.length > 0) {
-                    console.log(rooms);
+               // console.log(rooms.length);
+                if (!rooms || rooms.length == 0) {
+                    console.log('iciiii');
+                    Activity.create({
+                        date: startDate,
+                        title: activityTitle,
+                        description: activityDescription,
+                        address: activityAddress,
+                        city: activityCity,
+                        zip: activityZip,
+                        activityType: activityType,
+                        responsibleName: activityResponsibleName,
+                        responsibleEmail: activityResponsibleEmail,
+                        responsiblePhone: activityResponsiblePhone,
+                        startHour: activityStart,
+                        endHour: activityEnd
+                    }).then(result => {
+                        return res.status(201).json({
+                            message: "The activity successfully created",
+                        })
+                    })
+                        .catch(error => res.status(500).json({error}))
+
+
+                    RoomReservations.create({
+                        room_id: selectedOption,
+                        date: startDate,
+                        title: activityTitle,
+                        reservation_start_time: activityStart,
+                        reservation_end_time: activityEnd
+                    }).then(result => {
+                        return res.status(201).json({
+                            message: "The room reservation was successful!",
+                        })
+                    })
+                        .catch(error => res.status(500).json({error}))
+
+                } else {
                     for (var i = 0; i < rooms.length; i++) {
-                        if ((activityStart >= rooms[i].reservation_start_time  && activityStart < rooms[i].reservation_end_time) || (activityEnd > rooms[i].reservation_start_time  && activityEnd <= rooms[i].reservation_end_time)){
+                        if ((activityStart >= rooms[i].reservation_start_time && activityStart < rooms[i].reservation_end_time) || (activityEnd > rooms[i].reservation_start_time && activityEnd <= rooms[i].reservation_end_time)) {
                             return res.status(500).json({
                                 message: "La salle est déjà réservée pour ces plages horaires.",
                             })
                             //console.log(activityStart, ' - ', activityEnd);
-                        }else{
+                        } else {
                             Activity.create({
                                 date: startDate,
                                 title: activityTitle,
@@ -66,7 +98,7 @@ module.exports = {
                                 startHour: activityStart,
                                 endHour: activityEnd
                             }).then(result => {
-                                res.status(201).json({
+                                return res.status(201).json({
                                     message: "The activity successfully created",
                                 })
                             })
@@ -80,52 +112,49 @@ module.exports = {
                                 reservation_start_time: activityStart,
                                 reservation_end_time: activityEnd
                             }).then(result => {
-                                res.status(201).json({
+                                return res.status(201).json({
                                     message: "The room reservation was successful!",
                                 })
                             })
                                 .catch(error => res.status(500).json({error}))
                         }
                     }
-                }else{
-                    console.log('For this room, on mentioned day there is no reservations');
                 }
             });
-
-            //console.log('test'); return;
-
-        } catch(e) {
+        } catch (e) {
             console.log(e);
-            const path = __dirname + '/../../../uploads/activities/'+ req.file.filename;
+            const path = __dirname + '/../../../uploads/activities/' + req.file.filename;
             fs.unlink(path, (err) => {
-                if (err) { res.status(500).json({ message: "couldn't find file" }) }
+                if (err) {
+                    res.status(500).json({message: "couldn't find file"})
+                }
             })
-            res.status(500).json({ error : "Something is wrong in code" })
+            res.status(500).json({error: "Something is wrong in code"})
         }
 
     },
 
-    getActivitiy : (req, res, next) => {
+    getActivitiy: (req, res, next) => {
         const id = req.params.id;
         Activity.findById(id)
             .exec()
-            .then(result => res.status(200).json({ result }))
-            .catch(error => res.status(500).json({ error }))
+            .then(result => res.status(200).json({result}))
+            .catch(error => res.status(500).json({error}))
     },
 
-    getActivities : (req, res, next) => {
+    getActivities: (req, res, next) => {
 
-        if(req.params.type === 'none-type' || req.params.type === 'All') {
+        if (req.params.type === 'none-type' || req.params.type === 'All') {
             Activity.find()
                 .exec()
-                .then(result => res.status(200).json({ result }))
-                .catch(error => res.status(500).json({ error }))
+                .then(result => res.status(200).json({result}))
+                .catch(error => res.status(500).json({error}))
         } else {
             Activity.find()
-            .where('activityType').equals(req.params.type)
-            .exec()
-            .then(result => res.status(200).json({ result }))
-            .catch(error => res.status(500).json({ error }))
+                .where('activityType').equals(req.params.type)
+                .exec()
+                .then(result => res.status(200).json({result}))
+                .catch(error => res.status(500).json({error}))
         }
     },
 
@@ -144,43 +173,44 @@ module.exports = {
 
         let userType;
 
-        if (userTypeAdmin){
+        if (userTypeAdmin) {
             userType = 'Admin';
-        } else{
+        } else {
             userType = 'User';
         }
         User.create({
-            name : name,
-            surname : surname,
-            email : email,
-            password : password,
-            passwordconfirmation : passwordconfirmation,
-            userType : userType
+            name: name,
+            surname: surname,
+            email: email,
+            password: password,
+            passwordconfirmation: passwordconfirmation,
+            userType: userType
         }).then(result => {
             res.status(201).json({
                 message: "The user successfully created",
             })
         })
-            .catch(error => res.status(500).json({ error }))
+            .catch(error => res.status(500).json({error}))
 
     },
 
-    getRooms : (req, res, next) => {
+    getRooms: (req, res, next) => {
         Room.find()
             .exec()
-            .then(result => res.status(200).json({ result }))
-            .catch(error => res.status(500).json({ error }))
+            .then(result => res.status(200).json({result}))
+            .catch(error => res.status(500).json({error}))
     },
 
 
-    askToFollowActivity : (req, res, next) => {
-        const { message,
-                email,
-                id,
-                title
+    askToFollowActivity: (req, res, next) => {
+        const {
+            message,
+            email,
+            id,
+            title
         } = req.body;
-        
-        cle = 'mjc'+ id
+
+        cle = 'mjc' + id
 
         console.log(cle)
 
@@ -188,14 +218,14 @@ module.exports = {
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
-            secure : false,
-            port : 25,
+            secure: false,
+            port: 25,
             auth: {
                 user: process.env.EMAIL,
                 pass: process.env.PASSWORD
             },
-            tlsL :{
-                rejectUnauthorized : false
+            tlsL: {
+                rejectUnauthorized: false
             }
         });
 
@@ -203,17 +233,17 @@ module.exports = {
         const info = {
             from: 'mjc.stras.2020@gmail.com', // Sender address
             to: 'yilmaz.putun@hotmail.com',         // List of recipients
-            cc : 'tatevik.osipova@gmail.com',
+            cc: 'tatevik.osipova@gmail.com',
             subject: 'Inscription à une activité', // Subject line
-            html: "<h1>Bonjour Admin!</h1><p>Ceci est une demande d'inscription pour l'activité ayant l'id : <b>"+ id +" </b>et le titre : <b>"+ title+" </b>.</p>" +
-                "<p>Email : "+ email +"</p>" +
-                "<p>Message : "+ message +"</p>" +
+            html: "<h1>Bonjour Admin!</h1><p>Ceci est une demande d'inscription pour l'activité ayant l'id : <b>" + id + " </b>et le titre : <b>" + title + " </b>.</p>" +
+                "<p>Email : " + email + "</p>" +
+                "<p>Message : " + message + "</p>" +
                 "<br>" +
                 "Bien Cordialement,"
 
         };
 
-        transporter.sendMail(info, function(err, information) {
+        transporter.sendMail(info, function (err, information) {
             if (err) {
                 console.log(err)
             } else {
