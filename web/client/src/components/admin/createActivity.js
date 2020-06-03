@@ -69,6 +69,15 @@ const Activity = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        let dateObj = info.startDate;
+        let month = dateObj.getUTCMonth() + 1; //months from 1-12
+        let day = dateObj.getUTCDate();
+        let year = dateObj.getUTCFullYear();
+
+        let newdate = day + "/" + month + "/" + year;
+
+        //console.log(newdate); return
         const formData = new FormData();
         formData.append('activityTitle', info.activityTitle);
         formData.append('activityDescription', info.activityDescription);
@@ -80,12 +89,12 @@ const Activity = () => {
         formData.append('activityZip', info.activityZip);
         formData.append('activityTypeSportive', info.activityTypeSportive);
         formData.append('activityTypeCultural', info.activityTypeCultural);
-        formData.append('startDate', new Date());
+        formData.append('startDate', newdate);
         formData.append('activityStart', info.activityStart);
         formData.append('activityEnd', info.activityEnd);
         formData.append('selectedOption', info.selectedOption);
         formData.append('rooms', info.rooms);
-        if(info.image !== null)
+        if(info.image && info.image !== null)
             formData.append('activityPhoto', info.image, info.image.name);
 
 
