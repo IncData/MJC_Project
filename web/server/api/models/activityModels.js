@@ -57,16 +57,13 @@ const ActivitySchema = new Schema({
     type: String,
     required: true, 
   },
-  
 
-  participants: [
-      {
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: "users"
-        },
-      }
-  ],
+
+  participants: {
+    user: {
+      type: String,
+    },
+  }
 
 });
 
