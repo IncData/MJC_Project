@@ -13,6 +13,7 @@ class Header extends Component {
     };
   render() {
       const { user } = this.props.auth; //imported to use to say hello to user on navbar
+      console.log(user);
     return (
         <Navbar className="headerSection" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <div> <img
