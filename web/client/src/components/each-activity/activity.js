@@ -48,7 +48,7 @@ const Activity = ({id}) => {
     )
 }
 
-const ActivityPage = ({match}) => {
+const ActivityPage = ({match}) => {  //haskaca Dav   es hookeri xndric er ha eli ban ka Tat  che Dav jan, apres Xndrem))
 
     return <Activity id={match.params.id}/>
 }

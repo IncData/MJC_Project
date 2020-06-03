@@ -14,7 +14,7 @@ class Header extends Component {
 
     render() {
         const {user} = this.props.auth; //imported to use to say hello to user on navbar
-
+        //console.log(user.id);
         return (
             <Navbar className="headerSection" collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <div><img
@@ -44,7 +44,7 @@ class Header extends Component {
                             </Nav>
                             {user.id ?
                                 <Nav>
-                                    <Link to={`/profile/${user.id}`}>
+                                    <Link to={'/profile/' + user.id}>
                                         Profile
                                     </Link>
                                 </Nav>
