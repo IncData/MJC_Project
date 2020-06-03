@@ -9,6 +9,10 @@
   overflow: auto;
 }
 
+.loginInp{
+  text-align: center;
+}
+
 /* Sidebar links */
 .sidebarr a {
   display: block;

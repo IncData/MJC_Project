@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"test.roomreservations"}],"uuid":"0101b8e109874a8b9d1c5e16f02a95e9"}

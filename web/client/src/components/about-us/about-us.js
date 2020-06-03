@@ -6,7 +6,7 @@ import './index.css';
 const AboutUSPage = () => {
     return (
         <div className="container">
-            <h2 className="sectionTitle">Ubout Us</h2>
+            <h2 className="sectionTitle">Qui sommes nous? </h2>
             <div className="aboutUs">
 
                 <div className="App mapContainer">

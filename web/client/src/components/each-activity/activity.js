@@ -7,8 +7,6 @@ import axios from "axios";
 
 const Activity = ({id}) => {
     const [info, setInfo] = useState({
-        email: "",
-        message: "",
         showEmail: false
     });
     const changeEmailStatus = () => setInfo({ ...info, showEmail: !info.showEmail })
@@ -21,24 +19,6 @@ const Activity = ({id}) => {
             })
             .catch(error => console.log(error))
     }, [])
-
-
-    const handelChange = name => event => {
-        setInfo({...info, [name]: event.target.value})
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const url = `http://localhost:4000/api/admin/askToFollowActivity`;
-
-        axios.post(url, { ...info})
-            .then(({data}) => {
-                const {message} = data;
-                console.log(message)
-            })
-            .catch(error => console.log(error));
-    };
 
     return (
         <div className="container">
@@ -56,27 +36,13 @@ const Activity = ({id}) => {
                 <h6>{info.activityType}</h6>
                 <p>{info.description}</p>
 
-                <br/> <br/>
-                <button onClick={changeEmailStatus}>s'inscrire</button>
-                { info.showEmail ? <Email/> : null  }
-
-                <div className="infoPratique">
-                    <div>
-                        <h4>Infos pratiques</h4>
-                        <p>2 rue du Stade</p>
-                        <p>Pôle culturel</p>
-                        <p>67410 Drusenheim</p>
-                    </div>
-                    <div>
-                        <h4>Horaires :</h4>
-                        <h5><u>Ouverture du Pôle Culturel / Billetterie</u></h5>
-                        <p>Mardi de 14h à 19h</p>
-                        <p>Mercredi de 10h à 12h et de 14h à 19h</p>
-                        <p>Jeudi de 14h à 18h</p>
-                        <p>Vendredi de 14h à 19h</p>
-                        <p>Samedi de 9h30 à 12h30</p>
-                    </div>
-                </div>
+                <button className="btn btn-success" onClick={changeEmailStatus}>s'inscrire</button>
+                { info.showEmail ?
+                    <Email
+                        title={info.title}
+                        id={info._id}
+                    />
+                    : null  }
             </div>
         </div>
     )

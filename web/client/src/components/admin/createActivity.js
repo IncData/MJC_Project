@@ -55,7 +55,7 @@ const Activity = () => {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         //console.log(info)
        /* let dateObj = info.startDate;
         let month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -103,7 +103,7 @@ const Activity = () => {
                     />
                 </div>
 
-                <Form.Control as="select" custom onChange={selectRoom}>
+                <Form.Control as="select" custom className="inpSalle" onChange={selectRoom}>
                     {
                         handleChangeSelectBar()
                     }
@@ -111,7 +111,7 @@ const Activity = () => {
                 <br/>
                 <br/>
                 <div className="form-group divHour">
-                    <span>Veuillez préciser les horaires</span> <br/>
+                    <p>Veuillez préciser les horaires : </p> <br/>
                     <input type="Number" onChange={handelChange('activityStart')} id="inputTitle"
                            className="form-control inputHour" placeholder="From"
                            required/> <br/>
@@ -186,8 +186,7 @@ const Activity = () => {
                     </label>
                 </div>
 
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Publish Activity</button>
-                <p className="mt-5 mb-3 text-muted text-center">© MJC Strasbourg 2020</p>
+                <button className="btn btn-lg btn-primary btn-block inpPublier" type="submit">Publier</button>
 
             </div>
         </form>

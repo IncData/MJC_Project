@@ -1,9 +1,18 @@
-import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import logo from "../../logo/LogoMJC.png";
 import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
-export default function Header(){
+class Header extends Component {
+    onLogoutClick = e => {
+      e.preventDefault();
+      this.props.logoutUser();
+    };
+  render() {
+      const { user } = this.props.auth; //imported to use to say hello to user on navbar
     return (
         <Navbar className="headerSection" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <div> <img
@@ -41,9 +50,28 @@ export default function Header(){
                                 Login
                             </Link>
                         </Nav>
+                        <Nav>
+                        <Link to='/login' onClick={this.onLogoutClick}>
+                                Logout
+                            </Link>
+                        </Nav>
                     </Nav>
                 </Navbar.Collapse>
             </div>
         </Navbar>
-    )
+    );
+    };
 }
+
+Header.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  export default connect(
+    mapStateToProps,
+    { logoutUser }
+  )(Header);
+

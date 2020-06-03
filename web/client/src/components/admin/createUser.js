@@ -87,7 +87,7 @@ const User = () => {
 
                 <p>User Type </p>
                 <div className="form-check form-check-inline">
-                    <label>
+                    <label className="checkboxLabel">
                         User
                         <input
                             name="user"
@@ -103,8 +103,7 @@ const User = () => {
                             onChange={handelChange('userTypeAdmin')} />
                     </label>
                 </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Create User</button>
-                <p className="mt-5 mb-3 text-muted text-center">© MJC Strasbourg 2020</p>
+                <button className="btn btn-lg btn-primary btn-block inpPublier" type="submit">Create User</button>
 
             </div>
         </form>

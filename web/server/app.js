@@ -5,6 +5,7 @@ const env = require('dotenv').config()
 const bodyParser = require('body-parser');
 const users = require("./api/routes/users");
 const passport = require("passport");
+//const backup = require ("./api/routes/backup")
 
 const adminRoutes = require('./api/routes/admin');
 
@@ -49,10 +50,14 @@ require("./api/config/passport") (passport);
 // Routes
 app.use("/api/admin", users);
 
+//Mongodb backup routes
+const backup = require ("./api/routes/backup")
+app.use("/api/admin/", backup)
+
 app.use((req, res, next) => {
     const error = new Error("404 Not Found");
     error.status = 404;
-    next(error)
+    next(error) 
 })
 app.use((error, req, res, next) => {
     res.status(error.status || 500);

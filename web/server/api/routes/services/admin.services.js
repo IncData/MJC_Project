@@ -160,10 +160,16 @@ module.exports = {
     askToFollowActivity : (req, res, next) => {
         const { message,
                 email,
-                _id
+                id,
+                title
         } = req.body;
+        
+        cle = 'mjc'+ id
 
-console.log(req.body);
+        console.log(cle)
+
+        //console.log(req.body); return;
+
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             secure : false,
@@ -179,10 +185,16 @@ console.log(req.body);
 
 
         const info = {
-            from: email, // Sender address
+            from: 'mjc.stras.2020@gmail.com', // Sender address
             to: 'yilmaz.putun@hotmail.com',         // List of recipients
+            cc : 'tatevik.osipova@gmail.com',
             subject: 'Inscription à une activité', // Subject line
-            text: message
+            html: "<h1>Bonjour Admin!</h1><p>Ceci est une demande d'inscription pour l'activité ayant l'id : <b>"+ id +" </b>et le titre : <b>"+ title+" </b>.</p>" +
+                "<p>Email : "+ email +"</p>" +
+                "<p>Message : "+ message +"</p>" +
+                "<br>" +
+                "Bien Cordialement,"
+
         };
 
         transporter.sendMail(info, function(err, information) {
@@ -196,4 +208,6 @@ console.log(req.body);
         });
 
     },
+
+    
 }
