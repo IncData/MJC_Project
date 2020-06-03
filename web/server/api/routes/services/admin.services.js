@@ -3,14 +3,17 @@ const Activity = require('../../models/activityModels');
 const User = require('../../models/User');
 const Room = require('../../models/roomModels');
 const RoomReservations = require('../../models/roomReservationModels');
+const fs = require('fs');
 
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 module.exports = {
     createActivity: (req, res, next) => {
-       // console.log(req.body, "response");
-        const { startDate,
+        try {
+
+            const {
+                startDate,
                 activityTitle,
                 activityStart,
                 activityEnd,
@@ -25,69 +28,80 @@ module.exports = {
                 selectedOption
 
         } = req.body;
+
         let activityType;
 
-        if (activityTypeSportive){
-            activityType = 'Sportive';
-        } else{
-            activityType = 'Cultural';
+            if (activityTypeSportive) {
+                activityType = 'Sportive';
+            } else {
+                activityType = 'Cultural';
+            }
+
+
+            var checkAvailability = RoomReservations.
+            where('room_id').equals(selectedOption).
+            where('date').equals(startDate).
+            exec(function (err, rooms) {
+                if (err) return handleError(err);
+                if (rooms && rooms.length > 0) {
+                    console.log(rooms);
+                    for (var i = 0; i < rooms.length; i++) {
+                        if ((activityStart >= rooms[i].reservation_start_time  && activityStart < rooms[i].reservation_end_time) || (activityEnd > rooms[i].reservation_start_time  && activityEnd <= rooms[i].reservation_end_time)){
+                            return res.status(500).json({
+                                message: "La salle est déjà réservée pour ces plages horaires.",
+                            })
+                            //console.log(activityStart, ' - ', activityEnd);
+                        }else{
+                            Activity.create({
+                                date: startDate,
+                                title: activityTitle,
+                                description: activityDescription,
+                                address: activityAddress,
+                                city: activityCity,
+                                zip: activityZip,
+                                activityType: activityType,
+                                responsibleName: activityResponsibleName,
+                                responsibleEmail: activityResponsibleEmail,
+                                responsiblePhone: activityResponsiblePhone,
+                                startHour: activityStart,
+                                endHour: activityEnd
+                            }).then(result => {
+                                res.status(201).json({
+                                    message: "The activity successfully created",
+                                })
+                            })
+                                .catch(error => res.status(500).json({error}))
+
+
+                            RoomReservations.create({
+                                room_id: selectedOption,
+                                date: startDate,
+                                title: activityTitle,
+                                reservation_start_time: activityStart,
+                                reservation_end_time: activityEnd
+                            }).then(result => {
+                                res.status(201).json({
+                                    message: "The room reservation was successful!",
+                                })
+                            })
+                                .catch(error => res.status(500).json({error}))
+                        }
+                    }
+                }else{
+                    console.log('For this room, on mentioned day there is no reservations');
+                }
+            });
+
+            //console.log('test'); return;
+
+        } catch(e) {
+            console.log(e);
+            const path = __dirname + '/../../../uploads/activities/'+ req.file.filename;
+            fs.unlink(path, (err) => {
+                if (err) { res.status(500).json({ message: "couldn't find file" }) }
+            })
+            res.status(500).json({ error : "Something is wrong in code" })
         }
-
-        console.log(startDate);
-
-        var checkAvailability = RoomReservations.
-        //find('room_id').equals(selectedOption).
-        find({ "room_id" :  selectedOption}).
-        where({"date": {"$gte": startDate, "$lt": startDate}}).
-        //where('room_id').equals(selectedOption).
-        //where('reservation_start_time').gt(activityStart).lt(activityEnd).
-        //where('reservation_end_time').gt(activityStart).lt(activityEnd).
-        exec(function (err, rooms) {
-            if (err) return handleError(err);
-            console.log(rooms);
-        });
-
-
-
-        /*if ((activityStart < 9 || activityStart>=22) || (activityEnd < 9 || activityEnd>22) || (activityStart > activityEnd)) {
-            res.status(400).json({
-                message: "une erreur est est survenue. Veuillez respecter les horaires!",
-            })
-        }*/
-
-        Activity.create({
-            date : startDate,
-            title : activityTitle,
-            description : activityDescription,
-            address : activityAddress,
-            city : activityCity,
-            zip : activityZip,
-            activityType : activityType,
-            responsibleName : activityResponsibleName,
-            responsibleEmail : activityResponsibleEmail,
-            responsiblePhone : activityResponsiblePhone,
-            startHour : activityStart,
-            endHour : activityEnd
-        }).then(result => {
-            res.status(201).json({
-                message: "The activity successfully created",
-            })
-        })
-            .catch(error => res.status(500).json({ error }))
-
-
-        RoomReservations.create({
-            room_id : selectedOption,
-            date : startDate,
-            title : activityTitle,
-            reservation_start_time : activityStart,
-            reservation_end_time : activityEnd
-        }).then(result => {
-            res.status(201).json({
-                message: "The room reservation was successful!",
-            })
-        })
-            .catch(error => res.status(500).json({ error }))
 
     },
 
@@ -114,6 +128,8 @@ module.exports = {
             .catch(error => res.status(500).json({ error }))
         }
     },
+
+
     createUser: (req, res, next) => {
         console.log(req.body, "response");
         const {
@@ -168,7 +184,7 @@ module.exports = {
 
         console.log(cle)
 
-        //console.log(req.body); return;
+//console.log(req.body); return;
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -208,6 +224,4 @@ module.exports = {
         });
 
     },
-
-    
 }

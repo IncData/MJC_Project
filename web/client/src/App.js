@@ -48,15 +48,15 @@ const App = () => {
                 <Header/>
                     <Container>
                         <Switch>
-                            <Route path='/home' render={Home}/>
                             <Route path='/profile' render={UserProfile}/>
                             <Route path='/aboutUs' render={AboutUs}/>
                             <Route path='/activities' render={Activities}/>
                             <Route path='/item/:id' render={Activity}/>
-                            <Route path='/admin/createActivity' render={CreateActivity}/>
+                            <Route path='/admin/createactivity' render={CreateActivity}/>
                             <Route path='/admin/dashboard' render={Dashboard}/>
                             <Route path='/admin/createuser' render={CreateUser}/>
-                            <Route path='/login' component={Login} /> 
+                            <Route path='/login' component={Login} />
+                            <Route path='/' render={Home}/>
                         </Switch>
                     </Container>
                 <Footer/>

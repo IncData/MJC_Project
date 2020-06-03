@@ -52,22 +52,62 @@ const Activity = () => {
     const changeDate = (date) => {
         //console.log(date);
         setInfo({...info, startDate: date});
-    }
+    };
+
+    const chooseImage = (event) => {
+        const reader = new FileReader();
+        const file = event.target.files[0];
+
+        console.log(file);
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            setInfo({ ...info,
+                image: file
+            })
+        };
+    };
 
     const handleSubmit = (event) => {
-        //event.preventDefault();
-        //console.log(info)
-       /* let dateObj = info.startDate;
+        event.preventDefault();
+
+        let dateObj = info.startDate;
         let month = dateObj.getUTCMonth() + 1; //months from 1-12
         let day = dateObj.getUTCDate();
         let year = dateObj.getUTCFullYear();
 
-        let newdate = year + "-" + month + "-" + day;*/
+        let newdate = day + "/" + month + "/" + year;
+
+        //console.log(newdate); return
+        const formData = new FormData();
+        formData.append('activityTitle', info.activityTitle);
+        formData.append('activityDescription', info.activityDescription);
+        formData.append('activityResponsibleName', info.activityResponsibleName);
+        formData.append('activityResponsibleEmail', info.activityResponsibleEmail);
+        formData.append('activityResponsiblePhone', info.activityResponsiblePhone);
+        formData.append('activityAddress', info.activityAddress);
+        formData.append('activityCity', info.activityCity);
+        formData.append('activityZip', info.activityZip);
+        formData.append('activityTypeSportive', info.activityTypeSportive);
+        formData.append('activityTypeCultural', info.activityTypeCultural);
+        formData.append('startDate', newdate);
+        formData.append('activityStart', info.activityStart);
+        formData.append('activityEnd', info.activityEnd);
+        formData.append('selectedOption', info.selectedOption);
+        formData.append('rooms', info.rooms);
+        if(info.image && info.image !== null)
+            formData.append('activityPhoto', info.image, info.image.name);
+
 
         const url = `http://localhost:4000/api/admin/createActivity`;
-
-        axios.post(url, { ...info})
+        //console.log('start')
+        axios({
+            method: 'post',
+            url: url,
+            data: formData,
+            headers: { 'Accept': 'application/json' },
+        })
             .then(({data}) => {
+                console.log('end')
                 const {message} = data;
                 console.log(message)
             })
@@ -185,6 +225,8 @@ const Activity = () => {
                             onChange={handelChange('activityTypeCultural')}/>
                     </label>
                 </div>
+                <br/><br/>
+                <input onChange={chooseImage} type="file"/>
 
                 <button className="btn btn-lg btn-primary btn-block inpPublier" type="submit">Publier</button>
 
