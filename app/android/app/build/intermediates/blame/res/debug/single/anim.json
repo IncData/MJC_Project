@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_down.xml",
+        "source": "/Users/inkatec/.android/build-cache/a22a08eee8bb522a2279eed79602789d75846a05/output/res/anim/catalyst_slide_down.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_up.xml",
+        "source": "/Users/inkatec/.android/build-cache/a22a08eee8bb522a2279eed79602789d75846a05/output/res/anim/catalyst_slide_up.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/tooltip_exit.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/tooltip_exit.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_in.xml",
+        "source": "/Users/inkatec/.android/build-cache/a22a08eee8bb522a2279eed79602789d75846a05/output/res/anim/catalyst_fade_in.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_out.xml",
+        "source": "/Users/inkatec/.android/build-cache/a22a08eee8bb522a2279eed79602789d75846a05/output/res/anim/catalyst_fade_out.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/tooltip_enter.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/tooltip_enter.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
+        "source": "/Users/inkatec/.android/build-cache/a22a08eee8bb522a2279eed79602789d75846a05/output/res/anim/catalyst_push_up_out.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/inkatec/.android/build-cache/739a1489b312136ced748e85be1aa93e4985fbb9/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/inkatec/Rendu/MJCProject/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
+        "source": "/Users/inkatec/.android/build-cache/a22a08eee8bb522a2279eed79602789d75846a05/output/res/anim/catalyst_push_up_in.xml"
+    }
+]
