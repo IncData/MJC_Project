@@ -12,6 +12,7 @@ class Login extends Component {
         this.state = {
             email: "",
             password: "",
+            userType:"",
             errors: {}
         };
     }
@@ -19,13 +20,17 @@ class Login extends Component {
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to home page
         if (this.props.auth.isAuthenticated) {
-          this.props.history.push("/home");
+            this.props.history.push("/home");
         }
       }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
+        const user = this.props.auth;
+        if (nextProps.auth.isAuthenticated && user.userType == "userTypeUser" ) {
             this.props.history.push("/profile"); // push user to home when they login
+        }
+        else {
+            this.props.history.push("/aboutUs");
         }
         if (nextProps.errors) {
             this.setState({
@@ -42,7 +47,8 @@ class Login extends Component {
         e.preventDefault();
         const userData = {
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password, 
+            userType:this.state.userType,
         };
         console.log(userData);
         this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
@@ -80,7 +86,7 @@ class Login extends Component {
                 </span>
                             </div>
                             <div className="input-field col s12 loginInp">
-                                <label htmlFor="password">Password</label><br/>
+                                <label htmlFor="password">Mot de passe</label><br/>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.password}
@@ -108,7 +114,7 @@ class Login extends Component {
                                     type="submit"
                                     className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                                 >
-                                    Login
+                                    Entrer
                                 </button>
                             </div>
                         </form>

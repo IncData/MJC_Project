@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-//import './index.css';
+import './index.css';
 import DatePicker from "react-datepicker";
 //import Select from 'react-select';
 import { Form } from 'react-bootstrap'
@@ -107,7 +107,6 @@ const Activity = () => {
             headers: { 'Accept': 'application/json' },
         })
             .then(({data}) => {
-                console.log('end')
                 const {message} = data;
                 console.log(message)
             })
@@ -132,11 +131,11 @@ const Activity = () => {
                     {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
                     <h1 className="h3 mb-3 font-weight-normal"> MJC Strasbourg/Petite France</h1>
                     <p>
-                        Hey Admin! Do your stuff here! Impossible is nothing!
+                    Bonjour Admin, Vous pouvez créer des activitiés par ici
                     </p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="meeting-time">Choose a time for your appointment:</label>
+                    <label htmlFor="meeting-time">Veuillez préciser la date de l'activité :</label><br/>
                     <DatePicker
                         selected={info.startDate}
                         onChange={changeDate}
@@ -162,7 +161,7 @@ const Activity = () => {
                 </div>
 
                 <div className="form-group">
-                    <label>Title</label>
+                    <label>Titre de l'activité</label>
                     <input type="text" onChange={handelChange('activityTitle')} id="inputTitle" className="form-control"
                            placeholder="Start with a title"
                            required/><br/>
@@ -170,30 +169,30 @@ const Activity = () => {
 
 
                 <div className="form-group">
-                    <label>Decription textarea</label>
+                    <label>Déscription de l'activité</label>
                     <textarea onChange={handelChange('activityDescription')} className="form-control"
                               rows="3"></textarea>
                 </div>
 
                 <div className="form-group">
-                    <label>Adresse of activity</label>
+                    <label>Adresse de l'activité</label>
                     <input onChange={handelChange('activityAddress')} placeholder="123 rue de la rue"
                            className="form-control"></input>
                 </div>
 
                 <div className="form-group">
-                    <label>City of activity</label>
+                    <label>Ville de l'activité</label>
                     <input onChange={handelChange('activityCity')} className="form-control"></input>
                 </div>
 
                 <div className="form-group">
-                    <label>Zip of activity</label>
+                    <label>Code Postal de l'activité</label>
                     <input onChange={handelChange('activityZip')} className="form-control"></input>
                 </div>
 
                 <div className="form-group">
-                    <label><strong>Activity Responsible </strong></label><br/>
-                    <label>Name </label>
+                    <label><strong>Responsable de l'activité </strong></label><br/>
+                    <label>Nom </label>
                     <input type="text" onChange={handelChange('activityResponsibleName')} id="inputTitle"
                            className="form-control" placeholder="Reponsible Name"
                            required/><br/>
@@ -201,14 +200,14 @@ const Activity = () => {
                     <input type="email" onChange={handelChange('activityResponsibleEmail')} id="inputEmail"
                            className="form-control" placeholder="Reponsible Email"
                            required/><br/>
-                    <label>Phone Number </label>
+                    <label>Numero de téléphone </label>
                     <input type="tel" onChange={handelChange('activityResponsiblePhone')} id="inputPhone"
                            className="form-control" placeholder="Reponsible Phone"
                            required/><br/>
 
                 </div>
 
-                <p>Activity Type </p>
+                <p>Type de l'activité </p>
                 <div className="form-check form-check-inline">
                     <label className="checkboxLabel">
                         Sportive
@@ -218,7 +217,7 @@ const Activity = () => {
                             onChange={handelChange('activityTypeSportive')}/>
                     </label>
                     <label>
-                        Cultural
+                        Culturelle
                         <input
                             name="cultural"
                             type="checkbox"

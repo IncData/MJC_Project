@@ -39,7 +39,7 @@ const EmailForm = ({id, title}) => {
                            required/><br/>
                 </div>
                 <div className="form-group">
-                    <label>Message textarea</label>
+                    <label>Votre Message</label>
                     <textarea onChange={handelChange('message')} className="form-control"
                               rows="3"></textarea>
                 </div>

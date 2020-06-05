@@ -51,44 +51,44 @@ const User = () => {
                     {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
                     <h1 className="h3 mb-3 font-weight-normal"> MJC Strasbourg/Petite France</h1>
                     <p>
-                        Hey Admin! Do your stuff here to create users! Impossible is nothing!
+                    Bonjour Admin, Vous pouvez créer des compte des utilisateurs par ici!
                     </p>
                 </div>
 
                 <div className="form-group">
-                    <label>User Name</label>
+                    <label>Prénom de l'utilisateur</label>
                     <input type="text" onChange={handelChange('name')} id="inputUserName" className="form-control" placeholder="Start with a user name"
                            required/><br/>
                 </div>
 
                 <div className="form-group">
-                    <label>User Sur Name</label>
+                    <label>Nom de l'utilisateur</label>
                     <input type="text" onChange={handelChange('surname')} id="inputUserName" className="form-control" placeholder="Start with a user name"
                            required/><br/>
                 </div>
 
                 <div className="form-label-group">
-                    <label >Email address</label>
+                    <label >Email</label>
                     <input type="email" onChange={handelChange('email')} id="inputEmail" class="form-control" placeholder="Email address" required autofocus/><br/>
 
                 </div>
 
                 <div className="form-label-group">
-                    <label >Password</label>
+                    <label >Mot de passe</label>
                     <input type="password" onChange={handelChange('password')} id="password" class="form-control" placeholder="Password" required/><br/>
 
                 </div>
 
                 <div className="form-label-group">
-                    <label >Password Confirmation</label>
+                    <label >Confirmation de mot de passe</label>
                     <input type="password" onChange={handelChange('password2')} id="password2" class="form-control" placeholder="Password Confirmation" required/><br/>
 
                 </div>
 
-                <p>User Type </p>
+                <p>Type d'utilisateur </p>
                 <div className="form-check form-check-inline">
                     <label className="checkboxLabel">
-                        User
+                        Utilisateur
                         <input
                             name="user"
                             type="checkbox"

@@ -4,11 +4,13 @@ import './index.css';
 
 import './index.css';
 import aboutUsLogo from "../../logo/mjc_about_us.png";
-const UserProfile = () => {
+
+const UserProfile = ({match}) => {
+    console.log(match.params.id) //esia Tat   lsi, myus texy bayc match chkar, ,spasi search ara projecti mech match
     return (
 
         <div className="container">
-            <h2 className="sectionTitle">All My Activities</h2>
+            <h2 className="sectionTitle">Toutes mes activitéss</h2>
             <div>
                 <img
                     alt=""

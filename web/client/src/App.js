@@ -48,7 +48,7 @@ const App = () => {
                 <Header/>
                     <Container>
                         <Switch>
-                            <Route path='/profile' render={UserProfile}/>
+                            <Route path='/profile/:id' render={UserProfile}/>
                             <Route path='/aboutUs' render={AboutUs}/>
                             <Route path='/activities' render={Activities}/>
                             <Route path='/item/:id' render={Activity}/>

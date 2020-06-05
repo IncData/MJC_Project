@@ -22,7 +22,7 @@ const Footer = () => {
                                         <input type="text"/>
                                     </div>
                                     <div>
-                                        <button>Submit</button>
+                                        <button>Confirmer</button>
                                     </div>
                                 </div>
                             </MDBCol>
@@ -31,13 +31,13 @@ const Footer = () => {
                             <MDBCol md="12">
                                 <h5 className="title">Nous rejoindre</h5>
                                 <div className="footerLogo">
-                                    <img
+                                <a href="https://www.facebook.com/FDMJCAlsace/" target="_blank"><img
                                         alt=""
                                         src={facebookLogo}
                                         width="20"
                                         height="20"
                                         className="d-inline-block align-top"
-                                    />
+                                    /></a>
                                     <img
                                         alt=""
                                         src={instagramLogo}

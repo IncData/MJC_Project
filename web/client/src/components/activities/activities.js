@@ -57,16 +57,18 @@ const Activities = () => {
 
     return(
         <Fragment>
-            <h2 className="sectionTitle">Activities</h2>
-            <div>
-                <Form.Control as="select" custom className="inp" onChange={selectType}>
-                    <option value="All">Toutes les activités</option>
-                    <option value="Sportive">Activités Sportives</option>
-                    <option value="Cultural">Activités Culturelles</option>
-                </Form.Control>
-            </div>
-            {activities}
-        </Fragment>
+        <h2 className="sectionTitle">Nos Activités</h2>
+        <div class="container">
+        <label className="ml-1">Veuillez filtrer nos activités</label><br/>
+            <Form.Control as="select" custom className="inp ml-1" onChange={selectType}>
+                <br/>
+                <option value="All">Toutes les activités</option>
+                <option value="Sportive">Activités Sportives</option>
+                <option value="Cultural">Activités Culturelles</option>
+            </Form.Control>
+        </div>
+        {activities}
+    </Fragment>
     )
 
 }
