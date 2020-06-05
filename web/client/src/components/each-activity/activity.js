@@ -11,10 +11,9 @@ const Activity = ({id}) => {
     });
     const changeEmailStatus = () => setInfo({ ...info, showEmail: !info.showEmail })
     useEffect(() => {
-        //console.log(id)
+       
         axios.get('http://localhost:4000/api/admin/getActivity/' + id)
             .then((data) => {
-                //console.log(data.data.result)
                 setInfo(data.data.result)
             })
             .catch(error => console.log(error))
@@ -48,7 +47,7 @@ const Activity = ({id}) => {
     )
 }
 
-const ActivityPage = ({match}) => {  //haskaca Dav   es hookeri xndric er ha eli ban ka Tat  che Dav jan, apres Xndrem))
+const ActivityPage = ({match}) => { 
 
     return <Activity id={match.params.id}/>
 }

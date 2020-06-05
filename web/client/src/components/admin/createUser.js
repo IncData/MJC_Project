@@ -29,16 +29,15 @@ const User = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        //console.log("24");
         const url = `http://localhost:4000/api/admin/createuser`;
         console.log(info, 'info');
         axios.post(url, info)
             .then(({data}) => {
                 const { status, message } = data;
-                //console.log(data);
+                
                 if(status){
                     console.log(status)
-                    //setMessage(message)
+                    
                 }
             })
             .catch(error => console.log(error));   
@@ -48,7 +47,6 @@ const User = () => {
         <form className ="form-signin "onSubmit={handleSubmit}>
             <div className="container">
                 <div className="text-center mb-4">
-                    {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
                     <h1 className="h3 mb-3 font-weight-normal"> MJC Strasbourg/Petite France</h1>
                     <p>
                     Bonjour Admin, Vous pouvez créer des compte des utilisateurs par ici!

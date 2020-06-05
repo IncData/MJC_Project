@@ -128,7 +128,6 @@ const Activity = () => {
         <form onSubmit={handleSubmit}>
             <div className="container">
                 <div className="text-center mb-4">
-                    {/*<img className="mb-4" src="Logo MJC à mettre" alt width="72" height="72"/>*/}
                     <h1 className="h3 mb-3 font-weight-normal"> MJC Strasbourg/Petite France</h1>
                     <p>
                     Bonjour Admin, Vous pouvez créer des activitiés par ici

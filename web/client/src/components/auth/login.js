@@ -51,7 +51,7 @@ class Login extends Component {
             userType:this.state.userType,
         };
         console.log(userData);
-        this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+        this.props.loginUser(userData); 
     };
 
 
@@ -140,80 +140,3 @@ export default connect(
     {loginUser}
 )(Login);
 
-
-// const UserLogin = () => {
-//   return <Login />
-// }
-// export default UserLogin;
-
-
-// import React, {useState} from 'react';
-// import axios from 'axios';
-// import './index.css';
-
-
-// const Login = () => {
-
-//   const [info, setInfo] = useState({
-//     email: "",
-//     password: ""
-// })
-
-// const handleSubmit = () => {
-//   //event.preventDefault();
-//   //console.log("24");
-//   const url = `http://localhost:4000/api/admin/login`;
-//   console.log(info, 'info');
-//   axios.post(url, info)
-//       .then(({data}) => {
-//           const { status, message } = data;
-//           console.log(data);
-//           if(status){
-//               console.log(status)
-//               //setMessage(message)
-//           }
-//       })
-//       .catch(error => console.log(error));
-
-
-// }
-
-
-//     return (
-//         <div className="container">
-//             <form className="form-signin" onSubmit={handleSubmit}>
-//                 <div className="text-center mb-4">
-//                     <img className="mb-4" src="Logo MJC à mettre"  width="72" height="72"/>
-//                     <h1 className= "h3 mb-3 font-weight-normal"> MJC Strasbourg/Petite France</h1>
-//                     <p>
-//                         Hey! do not forget to log in
-//                     </p>
-//                 </div>
-//                 <div className="form-label-group">
-//                     <label>Email address</label>
-//                     <input type="email" onChange={handleSubmit('email')} id="inputEmail" className="form-control" placeholder="Email address" required /> <br/>
-
-//                 </div>
-//                 <div className="form-label-group">
-//                     <label>Password</label>
-//                     <input type="password" onChange={handleSubmit('password')} id="inputPassword" className="form-control" placeholder="Password" required/>
-
-//                 </div>
-//                 <br/>
-
-//                 <div className="checkbox mb-3">
-//                     <label>
-//                     <input type="checkbox" value="remember-me"/>Remember me
-//                 </label>
-//                 </div>
-//                 <button className="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-//                 <p className="mt-5 mb-3 text-muted text-center">© MJC Strasbourg 2020</p>
-//             </form>
-//         </div>
-//     )
-// }
-
-// const Login1 = () => {
-//   return <Login />
-// }
-// export default Login1;

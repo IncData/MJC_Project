@@ -43,10 +43,6 @@ if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords must match";
   }
 
-//userType checks
-// if (Validator.isEmpty(data.userType)) {
-//   errors.userType = "User Type field is required";
-// }
 
 return {
     errors,

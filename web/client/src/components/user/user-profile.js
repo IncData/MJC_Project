@@ -1,12 +1,12 @@
 import React from 'react';
 import './index.css';
-//import NewsSidebar from '../news-sidebar';
+
 
 import './index.css';
 import aboutUsLogo from "../../logo/mjc_about_us.png";
 
 const UserProfile = ({match}) => {
-    console.log(match.params.id) //esia Tat   lsi, myus texy bayc match chkar, ,spasi search ara projecti mech match
+    console.log(match.params.id) 
     return (
 
         <div className="container">
@@ -23,7 +23,6 @@ const UserProfile = ({match}) => {
                 <h6>22/05/2020</h6>
                 <h6>Sportive</h6>
                 <p>Pour l’heure d’un déconfinement progressif, le tourisme de proximité est à privilégier. Exit le tourisme de masse et revenons quelques années en arrière tout en profitant des nouvelles technologies et le numérique qui nous aident à préparer notre séjour.</p>
-                {/*<button type="contact-button" class="button">Send an email to Responsible</button>*/}
             </div><br/>
 
         </div>

@@ -16,7 +16,7 @@ const EmailForm = ({id, title}) => {
     };
 
     const handleSubmit = (event) => {
-        //event.preventDefault();
+        
 
         console.log(info) ;
         const url = `http://localhost:4000/api/admin/askToFollowActivity`;

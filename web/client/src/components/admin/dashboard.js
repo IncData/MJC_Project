@@ -1,9 +1,5 @@
 import React from 'react';
 import './index.css';
-//import NewsSidebar from '../news-sidebar';
-
-import './index.css';
-//import aboutUsLogo from "../../logo/mjc_about_us.png";
 const Dashboard = () => {
     return (
 

@@ -39,7 +39,7 @@ if (localStorage.jwtToken) {
   }
 //createStore() creates a Redux store that holds 
 //the complete state tree of our app. 
-//There should only be a single store in any app.
+
 
 const App = () => {
     return (
