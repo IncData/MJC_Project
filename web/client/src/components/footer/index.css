@@ -1,0 +1,22 @@
+footer {
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.newsletterMjc{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footerLogo{
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerBlok{
+    display: flex;
+    justify-content: space-between;
+}
